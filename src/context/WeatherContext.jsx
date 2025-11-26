@@ -10,6 +10,12 @@ function WeatherContextProvider({ children }) {
       windspeed: "kmh",
       precipitation: "mm",
     },
+    place: {
+      name: "",
+      latitude: "",
+      longitude: "",
+      country: "",
+    },
   };
   const weatherReducer = (state, action) => {
     if (action.type == "change_to_i") {
@@ -19,7 +25,7 @@ function WeatherContextProvider({ children }) {
           ...state.units,
           temperature: "fahrenheit",
           windspeed: "mph",
-          precipitation: "in",
+          precipitation: "inch",
         },
       };
     }
@@ -52,6 +58,19 @@ function WeatherContextProvider({ children }) {
         units: { ...state.units, precipitation: action.payload },
       };
     }
+    if (action.type == "set_place") {
+      console.log(action.payload);
+      return {
+        ...state,
+        place: {
+          ...state.place,
+          name: action.payload.place.name,
+          country: action.payload.place.country,
+          latitude: action.payload.place.latitude,
+          longitude: action.payload.place.longitude,
+        },
+      };
+    }
   };
   const [state, dispatch] = useReducer(weatherReducer, initialState);
   return (
@@ -61,4 +80,50 @@ function WeatherContextProvider({ children }) {
   );
 }
 
-export { WeatherContext, WeatherContextProvider };
+const WeatherDataContext = createContext();
+function WeatherDataContextProvider({ children }) {
+  const initialState = {
+    weatherDataa: {},
+    dailyIndex: -1,
+    hourlyIndex: -1,
+  };
+  const weatherDataReducer = (state, action) => {
+    if (action.type == "set_data") {
+      // console.log("here");
+      // console.log(action.payload);
+      // console.log({ ...state, weatherDataa: action.payload });
+      return { ...state, weatherDataa: action.payload };
+    }
+    if (action.type == "set_index") {
+      // console.log(action.payload);
+      // console.log({
+      //   ...state,
+      //   hourlyIndex: action.payload[0],
+      //   dailyIndex: action.payload[1],
+      // });
+
+      return {
+        ...state,
+        hourlyIndex: action.payload[0],
+        dailyIndex: action.payload[1],
+      };
+    }
+    return state;
+  };
+  const [weatherData, weatherDataDispatch] = useReducer(
+    weatherDataReducer,
+    initialState
+  );
+  return (
+    <WeatherDataContext.Provider value={{ weatherData, weatherDataDispatch }}>
+      {children}
+    </WeatherDataContext.Provider>
+  );
+}
+
+export {
+  WeatherContext,
+  WeatherContextProvider,
+  WeatherDataContext,
+  WeatherDataContextProvider,
+};

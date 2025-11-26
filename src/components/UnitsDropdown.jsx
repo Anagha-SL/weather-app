@@ -20,7 +20,7 @@ const UnitsDropdown = ({ dropdownOpen }) => {
   return (
     <div
       style={dropdownOpen ? { display: "block" } : { display: "none" }}
-      className="block absolute top-1/12 right-0 bg-[#272541ff] w-40 mr-2.5 text-base rounded-2xl"
+      className="block absolute top-1/12 right-0 bg-[#272541ff] w-40 mr-2.5 text-base rounded-2xl z-10"
     >
       <button onClick={handleClick} className="m-2.5 cursor-pointer hover:bg-[#3d3b5eff]">
         {units.temperature == "celsius" &&
@@ -77,10 +77,10 @@ const UnitsDropdown = ({ dropdownOpen }) => {
         </li>
         <li>
           <UnitsDropdownBtn
-            value="in"
+            value="inch"
             label="inches"
             type="preci_change"
-            checked={units.precipitation == "in"}
+            checked={units.precipitation == "inch"}
           />
         </li>
       </ul>

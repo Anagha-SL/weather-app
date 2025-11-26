@@ -1,8 +1,12 @@
 import Header from "./components/Header";
-import { WeatherContextProvider } from "./context/WeatherContext";
+import {
+  WeatherContextProvider,
+  WeatherDataContextProvider,
+} from "./context/WeatherContext";
 import "./App.css";
 import StaticText from "./components/StaticText";
 import Search from "./components/Search";
+import WeatherData from "./components/WeatherData";
 
 function App() {
   return (
@@ -11,6 +15,9 @@ function App() {
         <Header />
         <StaticText />
         <Search />
+        <WeatherDataContextProvider>
+          <WeatherData />
+        </WeatherDataContextProvider>
       </WeatherContextProvider>
     </>
   );

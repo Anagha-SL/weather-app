@@ -1,5 +1,13 @@
-const Place = ({ place, index }) => {
-  function handleClick() {}
+import { useContext } from "react";
+import { WeatherContext } from "../context/WeatherContext";
+
+const Place = ({ place, index, setSearchTerm }) => {
+  const { dispatch } = useContext(WeatherContext);
+  function handleClick() {
+    console.log(place);
+    dispatch({ type: "set_place", payload: { place } });
+    setSearchTerm("");
+  }
   return (
     <>
       <li
