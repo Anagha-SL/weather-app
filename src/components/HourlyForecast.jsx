@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { WeatherContext, WeatherDataContext } from "../context/WeatherContext";
-import DailyForecastDisplayBox from "./DailyForecastDisplayBox";
-import { getDays } from "../utilities/Helpers";
+import { getHours, getNextHoursForecast } from "../utilities/Helpers";
+import HourlyForecastDisplayBox from "./HourlyForecastDisplayBox";
 
-const DailyForecast = () => {
+const HourlyForecast = () => {
   const { state, dispatch } = useContext(WeatherContext);
   const { weatherData, weatherDataDispatch } = useContext(WeatherDataContext);
   console.log(weatherData);
@@ -14,11 +14,13 @@ const DailyForecast = () => {
         <div className="mt-5">
           <h2>Daily Forecast</h2>
           <div className="flex justify-between w-full mt-2.5">
-            {getDays(weatherData.weatherDataa, "short").map((day, index) => (
-              <DailyForecastDisplayBox
-                day={day}
-                min={weatherData.weatherDataa.daily.temperature_2m_min[index]}
-                max={weatherData.weatherDataa.daily.temperature_2m_max[index]}
+            {getNextHoursForecast(
+              weatherData.weatherDataa,
+              weatherData.hourlyIndex
+            ).map((data, index) => (
+              <HourlyForecastDisplayBox
+                hour={data.time}
+                temp={data.temp}
                 key={index}
               />
             ))}
@@ -29,4 +31,4 @@ const DailyForecast = () => {
   );
 };
 
-export default DailyForecast;
+export default HourlyForecast;

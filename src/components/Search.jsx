@@ -41,7 +41,7 @@ const Search = () => {
         </button>
       </div>
       {isLoading && (
-        <div className="flex items-center bg-[#272541ff] w-xs max-h-32 overflow-y-auto rounded-xl absolute left-[370px] my-2.5">
+        <div className="flex items-center bg-[#272541ff] w-xs max-h-32 overflow-y-auto rounded-xl absolute left-[370px] my-2.5 z-10">
           <img src="src\assets\images\icon-loading.svg" className="p-2" />
           <span>Search in progress</span>
         </div>

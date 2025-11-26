@@ -4,7 +4,7 @@ import MainForecastDisplay from "./MainForecastDisplay";
 
 const LeftSection = () => {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col mt-5">
       <Banner />
       <MainForecastDisplay />
       <DailyForecast />
