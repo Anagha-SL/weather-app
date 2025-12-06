@@ -24,9 +24,9 @@ const Search = () => {
     getPlaces();
   }, [searchTerm]);
   return (
-    <>
+    <div>
       <div className="flex justify-center">
-        <div className="bg-[#272541ff] flex w-xs h-10 rounded-xl mr-2.5">
+        <div className="bg-[#272541ff] flex w-xs h-10 rounded-xl mr-2.5 relative">
           <img className="p-3" src="src\assets\images\icon-search.svg" />
           <input
             className="focus:outline-none p-2"
@@ -35,21 +35,21 @@ const Search = () => {
             placeholder="Search for a place..."
             onChange={(e) => setSearchTerm(e.target.value)}
           />
+          {isLoading && (
+            <div className="flex items-center bg-[#272541ff] w-xs max-h-32 overflow-y-auto rounded-xl absolute top-full left-0 z-10 mt-2.5">
+              <img src="src\assets\images\icon-loading.svg" className="p-2" />
+              <span>Search in progress</span>
+            </div>
+          )}
+          {!isLoading && (
+            <PlacesList placesData={placesData} setSearchTerm={setSearchTerm} />
+          )}
         </div>
         <button className="bg-[#4455daff] w-20 h-10 rounded-xl cursor-pointer">
           Search
         </button>
       </div>
-      {isLoading && (
-        <div className="flex items-center bg-[#272541ff] w-xs max-h-32 overflow-y-auto rounded-xl absolute left-[370px] my-2.5 z-10">
-          <img src="src\assets\images\icon-loading.svg" className="p-2" />
-          <span>Search in progress</span>
-        </div>
-      )}
-      {!isLoading && (
-        <PlacesList placesData={placesData} setSearchTerm={setSearchTerm} />
-      )}
-    </>
+    </div>
   );
 };
 
