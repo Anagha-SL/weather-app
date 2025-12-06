@@ -19,6 +19,7 @@ const DailyForecast = () => {
                 day={day}
                 min={weatherData.weatherDataa.daily.temperature_2m_min[index]}
                 max={weatherData.weatherDataa.daily.temperature_2m_max[index]}
+                code={weatherData.weatherDataa.daily.weather_code[index]}
                 key={index}
               />
             ))}

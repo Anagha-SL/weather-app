@@ -85,7 +85,7 @@ function getNextHoursForecast(data, hourIndex, count = 8) {
     hourIndex + count
   );
   const hourlyCodes =
-    data.hourly.weathercode?.slice(hourIndex, hourIndex + count) || [];
+    data.hourly.weather_code?.slice(hourIndex, hourIndex + count) || [];
 
   return hourlyTimes.map((iso, i) => {
     const hour24 = parseInt(iso.slice(11, 13), 10);
@@ -101,10 +101,60 @@ function getNextHoursForecast(data, hourIndex, count = 8) {
   });
 }
 
+function getWeatherImagePath(weathercode) {
+  if (weathercode == 0 || weathercode == 1) {
+    return "src\\assets\\images\\icon-sunny.webp";
+  }
+  if (weathercode == 2) {
+    return "src\\assets\\images\\icon-partly-cloudy.webp";
+  }
+  if (weathercode == 3) {
+    return "src\\assets\\images\\icon-overcast.webp";
+  }
+  if (weathercode == 45 || weathercode == 48) {
+    return "src\\assets\\images\\icon-fog.webp";
+  }
+  if (
+    weathercode == 51 ||
+    weathercode == 53 ||
+    weathercode == 55 ||
+    weathercode == 56 ||
+    weathercode == 57
+  ) {
+    return "src\\assets\\images\\icon-drizzle.webp";
+  }
+  if (
+    weathercode == 61 ||
+    weathercode == 63 ||
+    weathercode == 65 ||
+    weathercode == 66 ||
+    weathercode == 67 ||
+    weathercode == 80 ||
+    weathercode == 81 ||
+    weathercode == 82
+  ) {
+    return "src\\assets\\images\\icon-rain.webp";
+  }
+  if (
+    weathercode == 71 ||
+    weathercode == 73 ||
+    weathercode == 75 ||
+    weathercode == 77 ||
+    weathercode == 85 ||
+    weathercode == 86
+  ) {
+    return "src\\assets\\images\\icon-snow.webp";
+  }
+  if (weathercode == 95 || weathercode == 96 || weathercode == 99) {
+    return "src\\assets\\images\\icon-storm.webp";
+  }
+}
+
 export {
   getFormattedLocalDate,
   getDays,
   getHourlyAndDailyIndex,
   getHours,
   getNextHoursForecast,
+  getWeatherImagePath,
 };
