@@ -13,7 +13,7 @@ const Search = () => {
           `https://geocoding-api.open-meteo.com/v1/search?name=${searchTerm}`
         )
         .then((response) => {
-          console.log(response.data.results);
+          // console.log(response.data.results);
           setPlacesData(response.data.results);
           //   console.log(placesData);
         })

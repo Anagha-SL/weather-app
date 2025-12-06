@@ -3,9 +3,9 @@ import { useContext } from "react";
 import { WeatherContext, WeatherDataContext } from "../context/WeatherContext";
 
 const MainForecastDisplay = () => {
-  const { state, dispatch } = useContext(WeatherContext);
-  const { weatherData, weatherDataDispatch } = useContext(WeatherDataContext);
-  console.log(weatherData);
+  const { state } = useContext(WeatherContext);
+  const { weatherData } = useContext(WeatherDataContext);
+  // console.log(weatherData);
   return (
     <>
       {Object.keys(weatherData.weatherDataa).length > 0 && (

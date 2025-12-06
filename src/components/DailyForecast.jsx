@@ -4,9 +4,8 @@ import DailyForecastDisplayBox from "./DailyForecastDisplayBox";
 import { getDays } from "../utilities/Helpers";
 
 const DailyForecast = () => {
-  const { state, dispatch } = useContext(WeatherContext);
-  const { weatherData, weatherDataDispatch } = useContext(WeatherDataContext);
-  console.log(weatherData);
+  const { weatherData } = useContext(WeatherDataContext);
+  // console.log(weatherData);
 
   return (
     <>

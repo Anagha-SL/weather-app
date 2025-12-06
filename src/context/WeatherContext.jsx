@@ -59,7 +59,7 @@ function WeatherContextProvider({ children }) {
       };
     }
     if (action.type == "set_place") {
-      console.log(action.payload);
+      // console.log(action.payload);
       return {
         ...state,
         place: {

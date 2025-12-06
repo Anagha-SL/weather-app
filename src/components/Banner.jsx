@@ -4,10 +4,10 @@ import { getFormattedLocalDate } from "../utilities/Helpers";
 import WeatherImage from "./WeatherImage";
 
 const Banner = () => {
-  const { state, dispatch } = useContext(WeatherContext);
-  const { weatherData, weatherDataDispatch } = useContext(WeatherDataContext);
-  console.log(weatherData);
-  console.log(weatherData.weatherDataa);
+  const { state } = useContext(WeatherContext);
+  const { weatherData } = useContext(WeatherDataContext);
+  // console.log(weatherData);
+  // console.log(weatherData.weatherDataa);
 
   return (
     <>

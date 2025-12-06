@@ -1,12 +1,11 @@
 import { useContext } from "react";
-import { WeatherContext, WeatherDataContext } from "../context/WeatherContext";
-import { getHours, getNextHoursForecast } from "../utilities/Helpers";
+import { WeatherDataContext } from "../context/WeatherContext";
+import { getNextHoursForecast } from "../utilities/Helpers";
 import HourlyForecastDisplayBox from "./HourlyForecastDisplayBox";
 
 const HourlyForecast = () => {
-  const { state, dispatch } = useContext(WeatherContext);
-  const { weatherData, weatherDataDispatch } = useContext(WeatherDataContext);
-  console.log(weatherData);
+  const { weatherData } = useContext(WeatherDataContext);
+  // console.log(weatherData);
 
   return (
     <>

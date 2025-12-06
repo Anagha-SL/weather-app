@@ -5,7 +5,7 @@ import UnitsDropdownBtn from "./UnitsDropdownBtn";
 const UnitsDropdown = ({ dropdownOpen }) => {
   const { state, dispatch } = useContext(WeatherContext);
   const units = state.units;
-  console.log(state);
+  // console.log(state);
   function handleClick() {
     if (
       units.temperature == "celsius" &&
