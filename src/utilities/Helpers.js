@@ -101,18 +101,31 @@ function getNextHoursForecast(data, hourIndex, count = 8) {
   });
 }
 
+import SunnyIcon from "../assets/images/icon-sunny.webp";
+import PartlyCloudyIcon from "../assets/images/icon-partly-cloudy.webp";
+import OvercastIcon from "../assets/images/icon-overcast.webp";
+import FogIcon from "../assets/images/icon-fog.webp";
+import DrizzleIcon from "../assets/images/icon-drizzle.webp";
+import RainIcon from "../assets/images/icon-rain.webp";
+import SnowIcon from "../assets/images/icon-snow.webp";
+import StormIcon from "../assets/images/icon-storm.webp";
+
 function getWeatherImagePath(weathercode) {
   if (weathercode == 0 || weathercode == 1) {
-    return "src\\assets\\images\\icon-sunny.webp";
+    // return "..\\assets\\images\\icon-sunny.webp";
+    return SunnyIcon;
   }
   if (weathercode == 2) {
-    return "src\\assets\\images\\icon-partly-cloudy.webp";
+    // return "..\\assets\\images\\icon-partly-cloudy.webp";
+    return PartlyCloudyIcon;
   }
   if (weathercode == 3) {
-    return "src\\assets\\images\\icon-overcast.webp";
+    // return "..\\assets\\images\\icon-overcast.webp";
+    return OvercastIcon;
   }
   if (weathercode == 45 || weathercode == 48) {
-    return "src\\assets\\images\\icon-fog.webp";
+    // return "..\\assets\\images\\icon-fog.webp";
+    return FogIcon;
   }
   if (
     weathercode == 51 ||
@@ -121,7 +134,8 @@ function getWeatherImagePath(weathercode) {
     weathercode == 56 ||
     weathercode == 57
   ) {
-    return "src\\assets\\images\\icon-drizzle.webp";
+    // return "..\\assets\\images\\icon-drizzle.webp";
+    return DrizzleIcon;
   }
   if (
     weathercode == 61 ||
@@ -133,7 +147,8 @@ function getWeatherImagePath(weathercode) {
     weathercode == 81 ||
     weathercode == 82
   ) {
-    return "src\\assets\\images\\icon-rain.webp";
+    // return "..\\assets\\images\\icon-rain.webp";
+    return RainIcon;
   }
   if (
     weathercode == 71 ||
@@ -143,10 +158,12 @@ function getWeatherImagePath(weathercode) {
     weathercode == 85 ||
     weathercode == 86
   ) {
-    return "src\\assets\\images\\icon-snow.webp";
+    // return "..\\assets\\images\\icon-snow.webp";
+    return SnowIcon;
   }
   if (weathercode == 95 || weathercode == 96 || weathercode == 99) {
-    return "src\\assets\\images\\icon-storm.webp";
+    // return "..\\assets\\images\\icon-storm.webp";
+    return StormIcon;
   }
 }
 

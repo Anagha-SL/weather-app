@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { WeatherContext, WeatherDataContext } from "../context/WeatherContext";
 import { getFormattedLocalDate } from "../utilities/Helpers";
 import WeatherImage from "./WeatherImage";
+import BannerImage from "../assets/images/bg-today-large.svg";
 
 const Banner = () => {
   const { state } = useContext(WeatherContext);
@@ -12,7 +13,7 @@ const Banner = () => {
   return (
     <>
       <div className="relative">
-        <img src="src\assets\images\bg-today-large.svg"></img>
+        <img src={BannerImage}></img>
         {Object.keys(weatherData.weatherDataa).length > 0 && (
           <div className="absolute flex top-1/2 left-1/2 transform-[translate(-50%,-50%)] items-center justify-between w-full">
             <div className="p-2.5">

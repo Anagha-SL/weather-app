@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { WeatherContext } from "../context/WeatherContext";
+import CheckmarkIcon from "../assets/images/icon-checkmark.svg";
 
 const UnitsDropdownBtn = ({ value, label, type, checked }) => {
   const { dispatch } = useContext(WeatherContext);
@@ -14,7 +15,7 @@ const UnitsDropdownBtn = ({ value, label, type, checked }) => {
       <span>{label}</span>
       {checked && (
         <span>
-          <img src="\src\assets\images\icon-checkmark.svg" />
+          <img src={CheckmarkIcon} />
         </span>
       )}
     </button>

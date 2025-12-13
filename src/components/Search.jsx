@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import PlacesList from "./PlacesList";
+import SearchIcon from "../assets/images/icon-search.svg";
+import LoadingIcon from "../assets/images/icon-loading.svg";
 
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -27,7 +29,7 @@ const Search = () => {
     <div>
       <div className="flex justify-center">
         <div className="bg-[#272541ff] flex w-xs h-10 rounded-xl mr-2.5 relative">
-          <img className="p-3" src="src\assets\images\icon-search.svg" />
+          <img className="p-3" src={SearchIcon} />
           <input
             className="focus:outline-none p-2"
             type="text"
@@ -37,7 +39,7 @@ const Search = () => {
           />
           {isLoading && (
             <div className="flex items-center bg-[#272541ff] w-xs max-h-32 overflow-y-auto rounded-xl absolute top-full left-0 z-10 mt-2.5">
-              <img src="src\assets\images\icon-loading.svg" className="p-2" />
+              <img src={LoadingIcon} className="p-2" />
               <span>Search in progress</span>
             </div>
           )}
