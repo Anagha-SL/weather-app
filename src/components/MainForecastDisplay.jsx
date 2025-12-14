@@ -9,7 +9,7 @@ const MainForecastDisplay = () => {
   return (
     <>
       {Object.keys(weatherData.weatherDataa).length > 0 && (
-        <div className="flex justify-between w-full mt-2.5">
+        <div className="flex justify-between w-full mt-2.5 flex-wrap items-center md:items-start">
           <ForecastDisplayBox
             header="Feels Like"
             value={`${

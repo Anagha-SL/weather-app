@@ -38,7 +38,7 @@ const WeatherData = () => {
   }, [state.units, state.place]);
 
   return (
-    <div className="flex justify-evenly">
+    <div className="flex flex-col md:flex-row justify-evenly">
       <LeftSection />
       <RightSection />
     </div>

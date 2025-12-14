@@ -27,8 +27,8 @@ const Search = () => {
   }, [searchTerm]);
   return (
     <div>
-      <div className="flex justify-center">
-        <div className="bg-[#272541ff] flex w-xs h-10 rounded-xl mr-2.5 relative">
+      <div className="flex flex-col md:flex-row justify-center">
+        <div className="bg-[#272541ff] flex w-full md:w-xs h-10 rounded-xl mr-2.5 relative">
           <img className="p-3" src={SearchIcon} />
           <input
             className="focus:outline-none p-2"
@@ -38,7 +38,7 @@ const Search = () => {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
           {isLoading && (
-            <div className="flex items-center bg-[#272541ff] w-xs max-h-32 overflow-y-auto rounded-xl absolute top-full left-0 z-10 mt-2.5">
+            <div className="flex items-center bg-[#272541ff] w-full md:w-xs max-h-32 overflow-y-auto rounded-xl absolute top-full left-0 z-10 mt-2.5">
               <img src={LoadingIcon} className="p-2" />
               <span>Search in progress</span>
             </div>
@@ -47,7 +47,7 @@ const Search = () => {
             <PlacesList placesData={placesData} setSearchTerm={setSearchTerm} />
           )}
         </div>
-        <button className="bg-[#4455daff] w-20 h-10 rounded-xl cursor-pointer">
+        <button className="w-full mt-2.5 bg-[#4455daff] md:w-20 md:mt-0 h-10 rounded-xl cursor-pointer">
           Search
         </button>
       </div>

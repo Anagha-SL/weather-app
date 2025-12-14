@@ -11,8 +11,8 @@ const DailyForecast = () => {
     <>
       {Object.keys(weatherData.weatherDataa).length > 0 && (
         <div className="mt-5">
-          <h2>Daily Forecast</h2>
-          <div className="flex justify-between w-full mt-2.5">
+          <h2 className="font-bold">Daily Forecast</h2>
+          <div className="flex justify-evenly w-full mt-2.5 flex-wrap">
             {getDays(weatherData.weatherDataa, "short").map((day, index) => (
               <DailyForecastDisplayBox
                 day={day}
