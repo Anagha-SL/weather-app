@@ -8,42 +8,63 @@ const MainForecastDisplay = () => {
   // console.log(weatherData);
   return (
     <>
-      {Object.keys(weatherData.weatherDataa).length > 0 && (
+      {weatherData.loading && (
         <div className="flex justify-between w-full mt-2.5 flex-wrap items-center md:items-start">
           <ForecastDisplayBox
             header="Feels Like"
-            value={`${
-              weatherData.weatherDataa.hourly.apparent_temperature[
-                weatherData.hourlyIndex
-              ]
-            }°`}
+            value="-"
           />
           <ForecastDisplayBox
             header="Humidity"
-            value={`${
-              weatherData.weatherDataa.hourly.relative_humidity_2m[
-                weatherData.hourlyIndex
-              ]
-            }%`}
+            value="-"
           />
           <ForecastDisplayBox
             header="Wind"
-            value={`${
-              weatherData.weatherDataa.hourly.wind_speed_10m[
-                weatherData.hourlyIndex
-              ]
-            }${state.units.windspeed}`}
+            value="-"
           />
           <ForecastDisplayBox
             header="Precipitation"
-            value={`${
-              weatherData.weatherDataa.hourly.precipitation[
-                weatherData.hourlyIndex
-              ]
-            }${state.units.precipitation}`}
+            value="-"
           />
         </div>
       )}
+      {!weatherData.loading &&
+        Object.keys(weatherData.weatherDataa).length > 0 && (
+          <div className="flex justify-between w-full mt-2.5 flex-wrap items-center md:items-start">
+            <ForecastDisplayBox
+              header="Feels Like"
+              value={`${
+                weatherData.weatherDataa.hourly.apparent_temperature[
+                  weatherData.hourlyIndex
+                ]
+              }°`}
+            />
+            <ForecastDisplayBox
+              header="Humidity"
+              value={`${
+                weatherData.weatherDataa.hourly.relative_humidity_2m[
+                  weatherData.hourlyIndex
+                ]
+              }%`}
+            />
+            <ForecastDisplayBox
+              header="Wind"
+              value={`${
+                weatherData.weatherDataa.hourly.wind_speed_10m[
+                  weatherData.hourlyIndex
+                ]
+              }${state.units.windspeed}`}
+            />
+            <ForecastDisplayBox
+              header="Precipitation"
+              value={`${
+                weatherData.weatherDataa.hourly.precipitation[
+                  weatherData.hourlyIndex
+                ]
+              }${state.units.precipitation}`}
+            />
+          </div>
+        )}
     </>
   );
 };

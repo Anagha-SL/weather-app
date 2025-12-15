@@ -1,27 +1,27 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import PlacesList from "./PlacesList";
 import SearchIcon from "../assets/images/icon-search.svg";
-import LoadingIcon from "../assets/images/icon-loading.svg";
+import { WeatherContext } from "../context/WeatherContext";
+import NoResults from "./NoResults";
+import SearchInProgress from "./SearchInProgress";
 
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [placesData, setPlacesData] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
+  const [placesData, setPlacesData] = useState([]);
+  const { fetchPlaces, state, dispatch } = useContext(WeatherContext);
   useEffect(() => {
-    function getPlaces() {
-      axios
-        .get(
-          `https://geocoding-api.open-meteo.com/v1/search?name=${searchTerm}`
-        )
-        .then((response) => {
-          // console.log(response.data.results);
-          setPlacesData(response.data.results);
-          //   console.log(placesData);
-        })
-        .finally(() => {
-          setIsLoading(false);
-        });
+    if (!searchTerm) {
+      return;
+    }
+    if (!searchTerm.trim()) {
+      setPlacesData([]);
+      dispatch({ type: "set_error", payload: null });
+      dispatch({ type: "set_noResults", payload: false });
+    }
+    async function getPlaces() {
+      const results = await fetchPlaces(searchTerm);
+      setPlacesData(results);
     }
     getPlaces();
   }, [searchTerm]);
@@ -37,14 +37,17 @@ const Search = () => {
             placeholder="Search for a place..."
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          {isLoading && (
-            <div className="flex items-center bg-[#272541ff] w-full md:w-xs max-h-32 overflow-y-auto rounded-xl absolute top-full left-0 z-10 mt-2.5">
-              <img src={LoadingIcon} className="p-2" />
-              <span>Search in progress</span>
-            </div>
+          {state.searching && <SearchInProgress />}
+          {searchTerm.trim() && state.noResults && !state.searching && (
+            <NoResults />
           )}
-          {!isLoading && (
-            <PlacesList placesData={placesData} setSearchTerm={setSearchTerm} />
+          {searchTerm.trim() && state.error && !state.searching && <Error />}
+          {placesData.length > 0 && (
+            <PlacesList
+              placesData={placesData}
+              setSearchTerm={setSearchTerm}
+              setPlacesData={setPlacesData}
+            />
           )}
         </div>
         <button className="w-full mt-2.5 bg-[#4455daff] md:w-20 md:mt-0 h-10 rounded-xl cursor-pointer">

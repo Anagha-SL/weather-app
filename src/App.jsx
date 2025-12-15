@@ -1,6 +1,7 @@
 import Header from "./components/Header";
 import {
   WeatherContextProvider,
+  WeatherDataContext,
   WeatherDataContextProvider,
 } from "./context/WeatherContext";
 import "./App.css";

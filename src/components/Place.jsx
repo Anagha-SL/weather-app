@@ -1,12 +1,13 @@
 import { useContext } from "react";
 import { WeatherContext } from "../context/WeatherContext";
 
-const Place = ({ place, setSearchTerm }) => {
+const Place = ({ place, setSearchTerm, setPlacesData }) => {
   const { dispatch } = useContext(WeatherContext);
   function handleClick() {
     // console.log(place);
     dispatch({ type: "set_place", payload: { place } });
     setSearchTerm("");
+    setPlacesData([]);
   }
   return (
     <>
