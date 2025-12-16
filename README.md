@@ -25,15 +25,11 @@ The app allows users to search for locations, view current weather conditions, a
 - **Open-Meteo API** (weather data)
 - **Geocoding API** (location search)
 
----
-
 ## State Management
 
 - Global state handled using Context API + reducer
 - API calls centralized in context
 - UI reacts to state changes (loading, searching, error, etc.)
-
----
 
 ## Improvements Planned
 
@@ -44,14 +40,11 @@ The app allows users to search for locations, view current weather conditions, a
 - Improved accessibility (ARIA)
 - Better state enums
 
----
-
 ## Acknowledgements
 
-- UI design by Frontend Mentor
-- Weather data powered by Open-Meteo
+- UI design by [Frontend Mentor](https://www.frontendmentor.io)
+- Weather data powered by [Open-Meteo](https://open-meteo.com/)
 
 ## Author
-
 Anagha SL
 GitHub: https://github.com/Anagha-SL
