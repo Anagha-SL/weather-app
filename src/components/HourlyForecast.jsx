@@ -14,8 +14,11 @@ const HourlyForecast = () => {
           Hourly Forecast
         </h2>
         <div className="flex flex-col justify-evenly items-center md:items-start w-full mt-2.5">
-          {[0, 1, 2, 3, 4, 5, 6, 7].map(() => (
-            <div className="w-4/5 lg:w-56 h-14 bg-[#323050] rounded-xl flex content-center justify-between items-center mx-5 my-1.5 p-2.5 border border-[#35315c]"></div>
+          {[0, 1, 2, 3, 4, 5, 6, 7].map((index) => (
+            <div
+              key={index}
+              className="w-4/5 lg:w-56 h-14 bg-[#323050] rounded-xl mx-5 my-1.5 p-2.5 border border-[#35315c]"
+            ></div>
           ))}
         </div>
       </div>

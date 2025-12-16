@@ -11,13 +11,17 @@ const DailyForecast = () => {
     return (
       <div className="mt-5">
         <h2 className="font-bold">Daily Forecast</h2>
-        <div className="flex flex-row justify-evenly w-full mt-2.5 flex-wrap"></div>
-        {[0, 1, 2, 3, 4, 5, 6].map(() => (
-          <div className="w-[100px] h-40 bg-[#272541ff] rounded-xl flex flex-col content-center justify-evenly md:justify-between border border-[#35315c] my-1.5 lg:my-0"></div>
-        ))}
+        <div className="flex justify-evenly w-full mt-2.5 flex-wrap">
+          {[0, 1, 2, 3, 4, 5, 6].map((index) => (
+            <div
+              key={index}
+              className="w-[100px] h-40 bg-[#272541ff] rounded-xl border border-[#35315c] my-1.5 lg:my-0"
+            ></div>
+          ))}
+        </div>
       </div>
     );
-  } else if(Object.keys(weatherData.weatherDataa).length > 0) {
+  } else if (Object.keys(weatherData.weatherDataa).length > 0) {
     return (
       <div className="mt-5">
         <h2 className="font-bold">Daily Forecast</h2>

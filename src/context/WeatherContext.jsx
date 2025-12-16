@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { act, createContext, useReducer } from "react";
 import axios from "axios";
 import { getHourlyAndDailyIndex } from "../utilities/Helpers";
 
@@ -25,6 +25,12 @@ function WeatherContextProvider({ children }) {
 
   const weatherReducer = (state, action) => {
     if (action.type == "change_to_i") {
+      if (
+        state.units ==
+        { temperature: "fahrenheit", windspeed: "mph", precipitation: "inch" }
+      ) {
+        return state;
+      }
       return {
         ...state,
         units: {
@@ -36,6 +42,12 @@ function WeatherContextProvider({ children }) {
       };
     }
     if (action.type == "change_to_m") {
+      if (
+        state.units ==
+        { temperature: "celsius", windspeed: "kmh", precipitation: "mm" }
+      ) {
+        return state;
+      }
       return {
         ...state,
         units: {
@@ -47,18 +59,27 @@ function WeatherContextProvider({ children }) {
       };
     }
     if (action.type == "temp_change") {
+      if (state.units.temperature === action.payload) {
+        return state;
+      }
       return {
         ...state,
         units: { ...state.units, temperature: action.payload },
       };
     }
     if (action.type == "windspeed_change") {
+      if (state.units.windspeed === action.payload) {
+        return state;
+      }
       return {
         ...state,
         units: { ...state.units, windspeed: action.payload },
       };
     }
     if (action.type == "preci_change") {
+      if (state.units.precipitation === action.payload) {
+        return state;
+      }
       return {
         ...state,
         units: { ...state.units, precipitation: action.payload },
@@ -182,7 +203,9 @@ function WeatherDataContextProvider({ children }) {
   );
 
   return (
-    <WeatherDataContext.Provider value={{ weatherData, weatherDataDispatch, fetchWeatherData }}>
+    <WeatherDataContext.Provider
+      value={{ weatherData, weatherDataDispatch, fetchWeatherData }}
+    >
       {children}
     </WeatherDataContext.Provider>
   );

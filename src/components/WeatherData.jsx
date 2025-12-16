@@ -1,4 +1,4 @@
-import { useEffect, useContext } from "react";
+import { useEffect, useContext, useRef } from "react";
 import LeftSection from "./LeftSection";
 import RightSection from "./RightSection";
 import {
@@ -10,14 +10,18 @@ import LoadingSkeleton from "./LoadingSkeleton";
 
 const WeatherData = () => {
   const { state } = useContext(WeatherContext);
-  const { weatherDataDispatch, fetchWeatherData, weatherData } =
-    useContext(WeatherDataContext);
+  const { fetchWeatherData } = useContext(WeatherDataContext);
+  const prevUnitsRef = useRef(null);
 
   useEffect(() => {
     if (!state.place.latitude) {
       return;
     }
+    if (prevUnitsRef == state.units) {
+      return;
+    }
     fetchWeatherData(state.place, state.units);
+    prevUnitsRef.current = state.units;
   }, [state.units, state.place]);
 
   // if (weatherData.loading) {
